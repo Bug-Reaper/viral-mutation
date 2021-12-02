@@ -107,6 +107,18 @@ python bin/cov.py bilstm --train --test \
     > cov_train.log 2>&1
 ```
 
+#### Omicron Spike experiments
+
+Evaluating the Coronaviridae language model on major SARS-CoV-2 Spike variants, including Omicron, as well as on SARS-CoV-1 Spike, can be done with the commands
+```bash
+python bin/cov_fasta.py \
+    examples/example_wt.fa \
+    examples/example_target.fa \
+    --checkpoint models/cov.hdf5 | tail -n+31 \
+    > cov_fasta.log
+python bin/plot_variants.py cov_fasta.log
+```
+
 #### Benchmarking experiments
 
 Performing a sweep of escape cutoffs to compare the AUC of CSCS to that of baseline methods can be done with the command
